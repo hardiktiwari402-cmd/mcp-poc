@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGO_URI, {});
+// mongoose.connect(process.env.MONGO_URI, {});
 
 app.post("/generate-changelog", async (req, res) => {
   try {
@@ -20,7 +20,7 @@ app.post("/generate-changelog", async (req, res) => {
 
     const commits = await fetchRecentCommits(owner, repo);
 
-    await Commit.deleteMany({ owner, repo });
+    // await Commit.deleteMany({ owner, repo });
     const docs = commits.map((c) => ({
       owner,
       repo,
@@ -29,7 +29,7 @@ app.post("/generate-changelog", async (req, res) => {
       author: c.commit.author.name,
       date: c.commit.author.date,
     }));
-    await Commit.insertMany(docs);
+    // await Commit.insertMany(docs);
 
     //mcp context for the skill (simulated mcp payload)
     const mcpContext = {

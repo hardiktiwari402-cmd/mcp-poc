@@ -20,7 +20,7 @@ export default function App() {
   const submit = async () => {
     setLoading(true);
     try {
-      const r = await axios.post("http://localhost:4000/generate-changelog", {
+      const r = await axios.post("https://mcp-poc-tk4d.onrender.com/generate-changelog", {
         owner,
         repo,
       });
